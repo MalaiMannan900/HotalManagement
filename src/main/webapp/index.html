@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s border-color ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .toggle-eye {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #5a67d8;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            font-size: 14px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-group button:hover {
+            background-color: #bdbdbd;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Login</h1>
+    <form action="HotalLogin" method="post">
+        <input id="username" type="text" name="username" placeholder="Username" required>
+
+        <!-- Password field with toggle icon -->
+        <div class="input-group">
+      <input type="password" name="password" id="password" placeholder="Password" required oninput="showEyeIcon()" />
+      <span id="toggleIcon" class="toggle-eye hidden" onclick="togglePassword()">👁️</span>
+    </div>
+
+
+        <input type="submit" name="login" value="Login">
+
+        <div class="button-group">
+            <button type="button" onclick="location.href='forgetpassword.html'">Forgot Password</button>
+            <button type="button" onclick="location.href='register.html'">Register</button>
+        </div>
+    </form>
+</div>
+
+ <script>
+  function showEyeIcon() {
+    const passwordInput = document.getElementById("password");
+    const toggleIcon = document.getElementById("toggleIcon");
+
+    if (passwordInput.value.length > 0) {
+      toggleIcon.classList.remove("hidden");
+    } else {
+      toggleIcon.classList.add("hidden");
+    }
+  }
+
+  function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const icon = document.getElementById("toggleIcon");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.textContent = "🙈"; // Icon when visible
+    } else {
+      passwordInput.type = "password";
+      icon.textContent = "👁️"; // Icon when hidden
+    }
+  }
+</script>
+
+
+</body>
+</html>
